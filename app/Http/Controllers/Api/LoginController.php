@@ -20,12 +20,15 @@ class LoginController extends Controller
             return (new UserResource($currentUser))->additional([
                 'meta' => [
                     'token' => $currentUser->api_token,
-                ]
+                ],
+                'error' => 'false',
+                'message' => 'Success Login'
             ]);
         }
 
         return response()->json([
-            'error' => 'Email atau Password Salah'
+            'error' => 'true',
+            'message' => 'Email atau Password Salah'
         ], '401');
     }
 }
